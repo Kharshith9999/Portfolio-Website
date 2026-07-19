@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     creditguard: {
       title: "CreditGuard",
       badge: "Deep Learning / Anomaly Detection",
-      desc: "A hybrid real-time fraud detection and anomaly intelligence system designed for financial security. It combines supervised classifiers with a PyTorch-based autoencoder to capture subtle, non-linear fraud patterns and zero-day anomalies.",
+      desc: "Developed an end-to-end anomaly detection pipeline pairing a supervised classifier with a PyTorch Autoencoder. Engineered features from high-dimensional transaction logs to achieve high precision in real-time fraud forecasting.",
       bullets: [
         "Built a hybrid fraud detection pipeline pairing XGBoost classification with a PyTorch deep autoencoder.",
         "Applied cost-sensitive learning weights and SMOTE oversampling to solve extreme class imbalance.",
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     predictai: {
       title: "PredictAI",
       badge: "LSTM / Predictive Maintenance",
-      desc: "An industrial equipment health monitoring system that leverages deep learning to predict failures. By analyzing multivariate sensor streams, it forecasts remaining-useful-life (RUL) and outputs proactive maintenance schedules to avoid costly equipment downtime.",
+      desc: "Built a Time-Series Predictive Maintenance engine using LSTM networks to analyze multi-sensor telemetry data streams. Implemented rolling window feature extraction to predict mechanical component failures before downtime occurs.",
       bullets: [
         "Built a deep LSTM model to predict equipment failure states from noisy, multivariate sensor time-series data.",
         "Engineered time-series features using rolling statistics and FFT-based frequency components to isolate degradation cues.",
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pulseboard: {
       title: "PulseBoard",
       badge: "NLP / Business Intelligence",
-      desc: "A customer feedback analytics intelligence platform. It collects multilingual customer feedback, extracts emotional categories and overall sentiment scores via NLP transformers, and feeds a MySQL data warehouse connected to Power BI dashboards.",
+      desc: "Engineered a text analytics dashboard transforming raw multilingual feedback into structured sentiment insights using Hugging Face pipelines. Designed automated MySQL extract-transform-load (ETL) pipelines integrated with interactive Power BI analytical dashboards.",
       bullets: [
         "Built an NLP feedback pipeline using Hugging Face transformers and NLTK for sentiment and theme extraction.",
         "Designed a MySQL-backed data warehouse schema optimized for aggregated sentiment trend queries.",
@@ -526,11 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
     langchain: ['python', 'rag', 'mcp'],
     rag: ['python', 'scikit', 'mysql'],
     mcp: ['python', 'fastapi', 'docker'],
-    pytorch: ['python', 'tensorflow', 'scikit', 'math'],
+    pytorch: ['python', 'tensorflow', 'scikit', 'numpy'],
     tensorflow: ['python', 'pytorch', 'scikit'],
     fastapi: ['python', 'cpp', 'docker', 'powerbi'],
     cpp: ['python', 'docker', 'ansys'],
-    ansys: ['math', 'docker'],
+    ansys: ['numpy', 'docker'],
     powerbi: ['mysql', 'excel', 'tableau']
   };
 
