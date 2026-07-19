@@ -641,7 +641,7 @@ body.accent-green #theme-toggle::after {
 .blueprint-container {
   border: 1px solid var(--color-card-border);
   border-radius: 12px;
-  background-color: #0b0e14;
+  background-color: var(--color-canvas-bg);
   padding: 4rem;
   position: relative;
   overflow: hidden;
@@ -667,7 +667,7 @@ body.accent-green #theme-toggle::after {
 
 .blueprint-node {
   border: 1px solid var(--color-card-border);
-  background-color: rgba(16, 20, 30, 0.8);
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   padding: 2rem;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
@@ -711,7 +711,7 @@ body.accent-green #theme-toggle::after {
   background-color: var(--color-muted-bg);
   border: 1px solid var(--color-card-border);
   border-radius: 4px;
-  color: var(--color-muted-text);
+  color: var(--color-fg);
   transition: all var(--transition-fast);
 }
 

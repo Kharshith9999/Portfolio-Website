@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Highlight target tag
       targetTag.style.borderColor = accentColor;
-      targetTag.style.color = '#FFFFFF';
+      targetTag.style.color = accentColor;
       targetTag.style.boxShadow = `0 0 8px var(--color-glow)`;
 
       const targetRect = targetTag.getBoundingClientRect();
