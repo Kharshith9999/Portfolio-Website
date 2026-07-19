@@ -71,11 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
-  // --- 1. Theme Manager (Accent Selector: Orange vs Green) ---
+  // --- 1. Theme Manager (Accent Selector & Dark/Light Mode Toggle) ---
   const themeToggle = document.getElementById('theme-toggle');
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
   const body = document.body;
 
-  // Retrieve theme preference (default is orange)
+  // 1.1 Accent Switcher
   const savedAccent = localStorage.getItem('portfolio-accent') || 'orange';
   if (savedAccent === 'green') {
     body.classList.remove('accent-orange');
@@ -85,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     body.classList.add('accent-orange');
   }
 
-  // Toggle Action
   themeToggle.addEventListener('click', () => {
     if (body.classList.contains('accent-orange')) {
       body.classList.remove('accent-orange');
@@ -96,8 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.add('accent-orange');
       localStorage.setItem('portfolio-accent', 'orange');
     }
-    // Re-draw or reset some colored elements if needed
   });
+
+  // 1.2 Dark/Light Mode Switcher
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  if (savedTheme === 'light') {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+  } else {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        localStorage.setItem('portfolio-theme', 'light');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('portfolio-theme', 'dark');
+      }
+    });
+  }
 
 
   // --- 2. Floating Navbar Hide/Show on Scroll ---
@@ -618,11 +641,12 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasPredict.addEventListener('mouseleave', () => hoverState = false);
 
     function drawPredictWaves() {
-      ctx.fillStyle = '#0b0e14';
+      const canvasBg = getComputedStyle(document.body).getPropertyValue('--color-canvas-bg').trim() || '#0b0e14';
+      ctx.fillStyle = canvasBg;
       ctx.fillRect(0, 0, width, height);
 
       // Grid backing
-      ctx.strokeStyle = '#182030';
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--color-card-border').trim() || '#182030';
       ctx.lineWidth = 0.5;
       for (let x = 0; x < width; x += 20) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
@@ -678,11 +702,12 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasCredit.addEventListener('mouseleave', () => hoverState = false);
 
     function drawCreditSpikes() {
-      ctx.fillStyle = '#0b0e14';
+      const canvasBg = getComputedStyle(document.body).getPropertyValue('--color-canvas-bg').trim() || '#0b0e14';
+      ctx.fillStyle = canvasBg;
       ctx.fillRect(0, 0, width, height);
 
       // Backing grid
-      ctx.strokeStyle = '#182030';
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--color-card-border').trim() || '#182030';
       ctx.lineWidth = 0.5;
       for (let x = 0; x < width; x += 25) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
@@ -749,11 +774,12 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasPulse.addEventListener('mouseleave', () => hoverState = false);
 
     function drawPulseSentiment() {
-      ctx.fillStyle = '#0b0e14';
+      const canvasBg = getComputedStyle(document.body).getPropertyValue('--color-canvas-bg').trim() || '#0b0e14';
+      ctx.fillStyle = canvasBg;
       ctx.fillRect(0, 0, width, height);
 
       // Backing grid
-      ctx.strokeStyle = '#182030';
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--color-card-border').trim() || '#182030';
       ctx.lineWidth = 0.5;
       for (let y = 0; y < height; y += 30) {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
@@ -813,7 +839,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function drawAgentRAG() {
-      ctx.fillStyle = '#0b0e14';
+      const canvasBg = getComputedStyle(document.body).getPropertyValue('--color-canvas-bg').trim() || '#0b0e14';
+      ctx.fillStyle = canvasBg;
       ctx.fillRect(0, 0, width, height);
 
       const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
@@ -821,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Draw connection lines
       ctx.lineWidth = 1;
-      ctx.strokeStyle = '#182030';
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--color-card-border').trim() || '#182030';
       
       // Question -> vectors / web
       for (let i = 1; i <= 3; i++) {

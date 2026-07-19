@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="accent-orange">
+<body class="dark-mode accent-orange">
 
   <!-- Background Glows -->
   <div class="blob blob-1"></div>
@@ -31,16 +31,21 @@
       </a>
       <nav class="nav-menu" id="nav-menu">
         <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Tech Map</a>
-        <a href="#projects" class="nav-link">Telemetry</a>
-        <a href="#experience" class="nav-link">Actions</a>
-        <a href="#contact" class="nav-link btn-contact">Connect</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link btn-contact">Contact</a>
       </nav>
       <div class="nav-actions">
         <!-- Accent Color Toggle (Orange vs Green) -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Color Theme">
           <span class="color-dot orange-dot"></span>
           <span class="color-dot green-dot"></span>
+        </button>
+        <!-- Dark/Light Mode Toggle -->
+        <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle Dark/Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
         <button id="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Open menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,20 +70,20 @@
         <div class="equation-container">
           <span class="eq-term">Mechanical Design</span>
           <span class="eq-operator">×</span>
-          <span class="eq-term">Agentic AI</span>
-          <span class="eq-result">_OPTIMIZATION</span>
+          <span class="eq-term">AI</span>
+          <span class="eq-result">Optimization</span>
         </div>
 
         <p class="hero-subtitle">
-          B.Tech (Hons.) Mechanical Engineer specializing in applying deep learning, time-series telemetry, and LangGraph multi-agent systems to solve complex physical-to-digital challenges.
+          B.Tech (Hons.) Mechanical Engineer specializing in applying deep learning, time-series data, and LangGraph multi-agent systems to solve complex engineering challenges.
         </p>
 
         <div class="hero-ctas">
           <a href="#projects" class="btn btn-primary">
-            <span>Access Telemetry</span>
+            <span>View Projects</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
-          <a href="#contact" class="btn btn-secondary">Initialise Connection</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
         </div>
 
         <div class="hero-scroll-indicator">
@@ -94,8 +99,8 @@
     <section id="about" class="about-section section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <h2 class="section-title">Academic & Leadership Grid</h2>
-          <p class="section-description">Structural blueprint of background, academic indexes, and administrative roles.</p>
+          <h2 class="section-title">About Me</h2>
+          <p class="section-description">My educational background and leadership experience.</p>
         </div>
         
         <div class="bento-grid">
@@ -103,7 +108,7 @@
           <div class="bento-card bento-tall reveal">
             <div class="card-glow"></div>
             <div class="bento-card-content">
-              <span class="card-tag">BIOGRAPHY // PROFILE</span>
+              <span class="card-tag">Biography</span>
               <h3>Core Intent</h3>
               <p>Pursuing a B.Tech (Hons.) in Mechanical Engineering at <strong>IIT Kharagpur</strong> (Graduation: 2028). I specialize in bridging physical systems with reinforcement learning and deep sequence modeling.</p>
               <p>By mapping mechanical constraints directly into AI agent graphs, I build software engines that transition away from classic heuristics toward dynamic, self-optimizing system control.</p>
@@ -119,9 +124,9 @@
           <div class="bento-card bento-wide reveal">
             <div class="card-glow"></div>
             <div class="bento-card-content">
-              <span class="card-tag">POSITIONS // LEADERSHIP</span>
+              <span class="card-tag">Leadership</span>
+              <h3>Sub-Head, Web Team</h3>
               <div class="flex-title-icon">
-                <h3>Sub-Head, Web Team</h3>
                 <span class="tech-tag">Shaurya, IIT Kharagpur</span>
               </div>
               <p>Orchestrated the engineering and release of the official Shaurya website using React.js and Tailwind CSS. Managed a 6-member developer team, set up staging branches, and directed end-to-end transportation and guest logistics coordination during the fest.</p>
@@ -137,7 +142,7 @@
           <div class="bento-card bento-wide reveal">
             <div class="card-glow"></div>
             <div class="bento-card-content">
-              <span class="card-tag">VERIFICATIONS // CERTIFICATES</span>
+              <span class="card-tag">Certifications</span>
               <h3>Certifications</h3>
               <ul class="cert-list">
                 <li>
@@ -159,8 +164,8 @@
     <section id="skills" class="skills-section section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <h2 class="section-title">Tech Stack Map</h2>
-          <p class="section-description">Interactive node clusters showing framework integrations. Hover over tags to highlight connections.</p>
+          <h2 class="section-title">Skills</h2>
+          <p class="section-description">My technical skill set and framework proficiencies.</p>
         </div>
 
         <!-- Skills Blueprint Map Container -->
@@ -232,19 +237,20 @@
     </section>
 
     <!-- Projects Section (Interactive Telemetry Mockups) -->
+    <!-- Projects Section (Interactive Telemetry Mockups) -->
     <section id="projects" class="projects-section section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <h2 class="section-title">Telemetry Dashboard</h2>
-          <p class="section-description">Interactive project consoles. Hover over canvas panels to modulate live data simulations.</p>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-description">A showcase of my recent work and engineering projects.</p>
         </div>
 
         <!-- Project Filters -->
         <div class="project-filters reveal">
-          <button class="filter-btn active" data-filter="all">All Engines</button>
-          <button class="filter-btn" data-filter="ai-agent">Agentic & NLP</button>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ai-agent">NLP & Agents</button>
           <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
-          <button class="filter-btn" data-filter="bi-dashboard">BI & Engineering</button>
+          <button class="filter-btn" data-filter="bi-dashboard">Data & Analytics</button>
         </div>
 
         <!-- Project Grid -->
@@ -261,7 +267,7 @@
             
             <div class="project-canvas-container">
               <canvas id="canvas-creditguard" class="project-card-canvas"></canvas>
-              <div class="terminal-badge active">[Status: Monitoring Anomaly Spikes]</div>
+              <div class="terminal-badge active">[Status: Running]</div>
             </div>
             
             <div class="project-content">
@@ -269,7 +275,7 @@
               <h3>CreditGuard</h3>
               <p class="project-summary">Anomaly intelligence engine pairing supervised classification with a PyTorch autoencoder, backed by a sub-millisecond edge C++ inference module.</p>
               <button class="btn-text open-modal-btn" data-project="creditguard">
-                <span>Access Console</span>
+                <span>View Details</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             </div>
@@ -287,7 +293,7 @@
             
             <div class="project-canvas-container">
               <canvas id="canvas-predictai" class="project-card-canvas"></canvas>
-              <div class="terminal-badge warning">[Status: Sensor Telemetry Live]</div>
+              <div class="terminal-badge warning">[Status: Running]</div>
             </div>
             
             <div class="project-content">
@@ -295,7 +301,7 @@
               <h3>PredictAI</h3>
               <p class="project-summary">Predictive maintenance forecasting remaining-useful-life (RUL) from multivariate sensor streams, utilizing rolling statistics and Fourier features.</p>
               <button class="btn-text open-modal-btn" data-project="predictai">
-                <span>Access Console</span>
+                <span>View Details</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             </div>
@@ -313,7 +319,7 @@
             
             <div class="project-canvas-container">
               <canvas id="canvas-pulseboard" class="project-card-canvas"></canvas>
-              <div class="terminal-badge active">[Status: Aggregating Feedback streams]</div>
+              <div class="terminal-badge active">[Status: Active]</div>
             </div>
             
             <div class="project-content">
@@ -321,7 +327,7 @@
               <h3>PulseBoard</h3>
               <p class="project-summary">Multilingual customer sentiment and emotion analytics pipeline querying feedback data warehouse connected to live BI dashboards.</p>
               <button class="btn-text open-modal-btn" data-project="pulseboard">
-                <span>Access Console</span>
+                <span>View Details</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             </div>
@@ -339,7 +345,7 @@
             
             <div class="project-canvas-container">
               <canvas id="canvas-agentiq" class="project-card-canvas"></canvas>
-              <div class="terminal-badge active">[Status: Active RAG validation loop]</div>
+              <div class="terminal-badge active">[Status: Active]</div>
             </div>
             
             <div class="project-content">
@@ -347,7 +353,7 @@
               <h3>AgentIQ</h3>
               <p class="project-summary">Corrective RAG assistant orchestrating multi-step semantic retrieval, chunk relevancy grading, and dynamic tool calls over Model Context Protocol.</p>
               <button class="btn-text open-modal-btn" data-project="agentiq">
-                <span>Access Console</span>
+                <span>View Details</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             </div>
@@ -356,12 +362,12 @@
       </div>
     </section>
 
-    <!-- Experience & Action timeline -->
+    <!-- Experience Section -->
     <section id="experience" class="activities-section section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <h2 class="section-title">Event Logs & Athletics</h2>
-          <p class="section-description">Sequence of leadership, coordination, and sport achievements.</p>
+          <h2 class="section-title">Experience</h2>
+          <p class="section-description">My athletic achievements and coordination roles.</p>
         </div>
 
         <div class="activities-timeline">
@@ -405,8 +411,8 @@
     <section id="contact" class="contact-section section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <h2 class="section-title">Establish Connection</h2>
-          <p class="section-description">Transmit parameters for research collaboration, project review, or requests.</p>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-description">Get in touch for collaborations or opportunities.</p>
         </div>
 
         <div class="contact-grid reveal">
@@ -417,18 +423,18 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </div>
               <div>
-                <h5>Email Channel</h5>
+                <h5>Email</h5>
                 <p><a href="mailto:konetiharshith22@gmail.com" class="monospace">konetiharshith22@gmail.com</a></p>
               </div>
-            </div>
             <div class="info-card">
               <div class="info-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               </div>
               <div>
-                <h5>Physical Node</h5>
+                <h5>Location</h5>
                 <p>IIT Kharagpur, West Bengal, India</p>
               </div>
+            </div>
             </div>
             
             <div class="social-links">
@@ -440,23 +446,22 @@
               </a>
             </div>
           </div>
-
           <!-- Contact Form -->
           <form class="contact-form" id="contact-form">
             <div class="form-group">
-              <label for="name">TRANSMITTER NAME</label>
+              <label for="name">Name</label>
               <input type="text" id="name" required placeholder="Enter Name">
             </div>
             <div class="form-group">
-              <label for="email">TRANSMITTER EMAIL</label>
+              <label for="email">Email</label>
               <input type="email" id="email" required placeholder="enter.email@domain.com">
             </div>
             <div class="form-group">
-              <label for="message">MESSAGE PAYLOAD</label>
+              <label for="message">Message</label>
               <textarea id="message" rows="5" required placeholder="Transmitting signal..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block">
-              <span>Send Payload</span>
+              <span>Send Message</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
           </form>
@@ -464,11 +469,11 @@
       </div>
     </section>
   </main>
-
+ 
   <footer class="footer">
     <div class="container footer-container">
-      <p>&copy; 2026 Koneti Harshith. Source encrypted under MIT protocol.</p>
-      <p class="footer-credit">Design: Industrial Cyberpunk Preset conforming to UI UX Pro Max.</p>
+      <p>&copy; 2026 Koneti Harshith. All rights reserved.</p>
+      <p class="footer-credit">Designed by Koneti Harshith.</p>
     </div>
   </footer>
 

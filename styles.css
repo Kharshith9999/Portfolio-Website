@@ -23,6 +23,24 @@
   --color-glass-bg: rgba(16, 20, 30, 0.75);
   --color-glass-border: rgba(29, 36, 51, 0.8);
   --color-grid-line: rgba(29, 36, 51, 0.12);
+  --color-canvas-bg: #0b0e14;
+}
+
+body.light-mode {
+  --color-bg: #f8fafc;
+  --color-fg: #0f172a;
+  --color-card-bg: #ffffff;
+  --color-card-border: #cbd5e1;
+  --color-muted-bg: #f1f5f9;
+  --color-muted-text: #64748b;
+  --color-glass-bg: rgba(248, 250, 252, 0.75);
+  --color-glass-border: rgba(203, 213, 225, 0.8);
+  --color-grid-line: rgba(203, 213, 225, 0.4);
+  --color-canvas-bg: #f1f5f9;
+}
+
+body.light-mode .blob {
+  opacity: 0.06;
 }
 
 /* 1. Theme State: Industrial Safety Orange (Default) */
@@ -1480,4 +1498,45 @@ body.accent-green #theme-toggle::after {
   .contact-form {
     padding: 2rem 1.5rem;
   }
+}
+
+/* Dark/Light mode toggle button styles */
+.dark-mode-btn {
+  background: transparent;
+  border: 1px solid var(--color-card-border);
+  color: var(--color-muted-text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.dark-mode-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.dark-mode-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-normal);
+}
+
+/* Display sun icon when dark-mode, display moon icon when light-mode */
+body.dark-mode .sun-icon {
+  display: block !important;
+}
+body.dark-mode .moon-icon {
+  display: none !important;
+}
+body.light-mode .sun-icon {
+  display: none !important;
+}
+body.light-mode .moon-icon {
+  display: block !important;
 }
