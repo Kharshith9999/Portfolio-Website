@@ -273,6 +273,12 @@ p {
   color: #000000 !important;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 /* Theme Toggle Button (Orange vs Green Accent) */
 .theme-toggle-btn {
   width: 54px;
