@@ -807,6 +807,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let pulseOffset = 0;
+ 
+    function varAccentBorderColor() {
+      return getComputedStyle(document.body).getPropertyValue('--color-card-border').trim();
+    }
 
     function drawAgentRAG() {
       ctx.fillStyle = '#0b0e14';
@@ -871,9 +875,6 @@ document.addEventListener('DOMContentLoaded', () => {
       animFrameIds.agent = requestAnimationFrame(drawAgentRAG);
     }
 
-    function varAccentBorderColor() {
-      return getComputedStyle(document.body).getPropertyValue('--color-card-border').trim();
-    }
     drawAgentRAG();
   }
 

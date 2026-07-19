@@ -22,7 +22,7 @@
   --color-muted-text: #8b9bb4;
   --color-glass-bg: rgba(16, 20, 30, 0.75);
   --color-glass-border: rgba(29, 36, 51, 0.8);
-  --color-grid-line: rgba(29, 36, 51, 0.3);
+  --color-grid-line: rgba(29, 36, 51, 0.12);
 }
 
 /* 1. Theme State: Industrial Safety Orange (Default) */
@@ -72,26 +72,45 @@ body {
   background-size: 60px 60px;
 }
 
-/* Scanlines overlay */
-.scanlines {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.15) 50%
-  ), linear-gradient(
-    90deg, 
-    rgba(255, 0, 0, 0.03), 
-    rgba(0, 255, 0, 0.01), 
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 4px, 6px 100%;
-  z-index: 999;
+/* Background Glow Blobs */
+.blob {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.15;
+  z-index: -1;
   pointer-events: none;
-  opacity: 0.45;
+  transition: opacity var(--transition-normal);
+}
+
+.blob-1 {
+  background: var(--color-primary);
+  top: 10%;
+  left: -10%;
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  background: var(--color-secondary);
+  top: 50%;
+  right: -10%;
+  animation: float 30s infinite alternate-reverse ease-in-out;
+}
+
+.blob-3 {
+  background: var(--color-accent);
+  bottom: 10%;
+  left: 20%;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(5%, 8%) scale(1.15); }
 }
 
 a {
@@ -356,9 +375,10 @@ body.accent-green #theme-toggle::after {
 
 .hero-title {
   font-family: var(--font-header);
-  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-size: clamp(3rem, 7.5vw, 5.5rem);
   font-weight: 800;
-  line-height: 0.95;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
   letter-spacing: -2px;
   color: var(--color-fg);
 }
