@@ -1,6 +1,6 @@
 /* ==========================================================================
-   PORTFOLIO INTERACTIVE LOGIC (Vanilla JS)
-   Style: Motion-Driven Micro-interactions
+   PORTFOLIO INTERACTIVE LOGIC (Industrial Cyberpunk Redesign)
+   Aesthetic: Telemetry + Interactive Blueprints + Particle Nodes
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stack: ["Python", "C++", "PyTorch", "MySQL", "FastAPI", "Docker", "MLflow", "Power BI"],
       repo: "https://github.com/Kharshith9999/Portfolio-Website",
       notebook: "#",
-      analytics: [85, 92, 89, 96, 94, 98, 99] // Simulated telemetry values (e.g., accuracy % over epochs)
+      analytics: [85, 92, 89, 96, 94, 98, 99]
     },
     predictai: {
       title: "PredictAI",
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stack: ["Python", "TensorFlow", "NumPy", "Pandas", "SciPy", "Streamlit", "DVC", "MLflow"],
       repo: "https://github.com/Kharshith9999/Portfolio-Website",
       notebook: "#",
-      analytics: [42, 58, 67, 73, 79, 84, 88] // Simulated values (e.g., remaining useful life hours prediction confidence)
+      analytics: [42, 58, 67, 73, 79, 84, 88]
     },
     pulseboard: {
       title: "PulseBoard",
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stack: ["Python", "Hugging Face", "NLTK", "MySQL", "FastAPI", "Power BI", "Tableau", "Excel"],
       repo: "https://github.com/Kharshith9999/Portfolio-Website",
       notebook: "#",
-      analytics: [15, 30, 48, 62, 70, 75, 82] // Simulated values (e.g., feedback ingestion volumes / min)
+      analytics: [15, 30, 48, 62, 70, 75, 82]
     },
     agentiq: {
       title: "AgentIQ",
@@ -66,29 +66,37 @@ document.addEventListener('DOMContentLoaded', () => {
       stack: ["Python", "LangGraph", "LangChain", "RAGAS", "MCP", "JupyterLab", "Rest APIs"],
       repo: "https://github.com/Kharshith9999/Portfolio-Website",
       notebook: "#",
-      analytics: [60, 75, 81, 88, 92, 95, 97] // Simulated values (e.g., retrieval precision % over test set iterations)
+      analytics: [60, 75, 81, 88, 92, 95, 97]
     }
   };
 
 
-  // --- 1. Theme Manager (Light / Dark Mode) ---
+  // --- 1. Theme Manager (Accent Selector: Orange vs Green) ---
   const themeToggle = document.getElementById('theme-toggle');
   const body = document.body;
 
-  // Retrieve theme preference
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme === 'light') {
-    body.classList.remove('dark-mode');
+  // Retrieve theme preference (default is orange)
+  const savedAccent = localStorage.getItem('portfolio-accent') || 'orange';
+  if (savedAccent === 'green') {
+    body.classList.remove('accent-orange');
+    body.classList.add('accent-green');
   } else {
-    // Default to dark mode as recommended by style guide
-    body.classList.add('dark-mode');
+    body.classList.remove('accent-green');
+    body.classList.add('accent-orange');
   }
 
   // Toggle Action
   themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const activeTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('portfolio-theme', activeTheme);
+    if (body.classList.contains('accent-orange')) {
+      body.classList.remove('accent-orange');
+      body.classList.add('accent-green');
+      localStorage.setItem('portfolio-accent', 'green');
+    } else {
+      body.classList.remove('accent-green');
+      body.classList.add('accent-orange');
+      localStorage.setItem('portfolio-accent', 'orange');
+    }
+    // Re-draw or reset some colored elements if needed
   });
 
 
@@ -98,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    // Don't hide navbar if close to top
     if (currentScrollY < 100) {
       navbar.classList.remove('nav-hidden');
     } else if (currentScrollY > lastScrollY) {
@@ -122,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileToggle.setAttribute('aria-expanded', isOpen);
     
     if (isOpen) {
-      // Animate hamburger to X
       lineMid.style.opacity = '0';
       lineTop.style.transform = 'translateY(6px) rotate(45deg)';
       lineBot.style.transform = 'translateY(-6px) rotate(-45deg)';
@@ -138,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navMenu.style.backdropFilter = 'blur(16px)';
       navMenu.style.webkitBackdropFilter = 'blur(16px)';
     } else {
-      // Reset hamburger
       lineMid.style.opacity = '1';
       lineTop.style.transform = 'none';
       lineBot.style.transform = 'none';
@@ -146,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Close mobile menu when clicking a link
   navMenu.addEventListener('click', (e) => {
     if (e.target.classList.contains('nav-link') && navMenu.classList.contains('mobile-open')) {
       navMenu.classList.remove('mobile-open');
@@ -178,13 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        // Unobserve after animating once to prevent repeated triggers on scroll
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
@@ -196,29 +199,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active from other buttons
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const filterVal = btn.getAttribute('data-filter');
 
       projectCards.forEach(card => {
-        // Fade out transition
         card.style.opacity = '0';
-        card.style.transform = 'scale(0.95) translateY(15px)';
+        card.style.transform = 'scale(0.97) translateY(10px)';
         
         setTimeout(() => {
           const cardCategory = card.getAttribute('data-category');
           if (filterVal === 'all' || cardCategory === filterVal) {
             card.style.display = 'flex';
-            // Trigger redraw/reflow
-            card.offsetHeight;
+            card.offsetHeight; // Reflow
             card.style.opacity = '1';
             card.style.transform = 'none';
           } else {
             card.style.display = 'none';
           }
-        }, 200); // Matches transitions
+        }, 200);
       });
     });
   });
@@ -238,22 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalIpynbLink = document.getElementById('modal-ipynb-link');
   const mockChart = document.getElementById('modal-mock-chart');
 
-  // Open Modal
   openModalBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Get parent project card or attribute
-      const card = btn.closest('.project-card');
+    btn.addEventListener('click', () => {
       const projectKey = btn.getAttribute('data-project');
       const project = projectsData[projectKey];
 
       if (!project) return;
 
-      // Populate details
       modalBadge.textContent = project.badge;
       modalTitle.textContent = project.title;
       modalDesc.textContent = project.desc;
       
-      // Bullets
       modalBullets.innerHTML = '';
       project.bullets.forEach(bullet => {
         const li = document.createElement('li');
@@ -261,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBullets.appendChild(li);
       });
 
-      // Technical Stack Tags
       modalStack.innerHTML = '';
       project.stack.forEach(tech => {
         const span = document.createElement('span');
@@ -270,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalStack.appendChild(span);
       });
 
-      // Links (set structure/placeholder paths)
       modalRepoLink.href = project.repo;
       modalRepoLink.classList.remove('disabled');
       
@@ -282,20 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
         modalIpynbLink.classList.add('disabled');
       }
 
-      // Draw Mock Telemetry Charts
       drawMockChart(project.analytics);
-
-      // Open tab resets to github repo
       resetModalTabs();
 
-      // Show Modal overlay
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
-      body.style.overflow = 'hidden'; // Disable scroll on body
+      body.style.overflow = 'hidden';
     });
   });
 
-  // Reset tab active states inside modal panel
   function resetModalTabs() {
     const tabs = modal.querySelectorAll('.panel-tab-btn');
     const panes = modal.querySelectorAll('.tab-pane');
@@ -307,48 +295,40 @@ document.addEventListener('DOMContentLoaded', () => {
     panes[0].classList.add('active');
   }
 
-  // Draw simulated telemetry bar graph
   function drawMockChart(values) {
     mockChart.innerHTML = '';
     const maxVal = Math.max(...values);
     values.forEach(val => {
-      const heightPercent = (val / maxVal) * 80; // Scale down so labels fit above
+      const heightPercent = (val / maxVal) * 80;
       const bar = document.createElement('div');
       bar.className = 'mock-bar';
       bar.setAttribute('data-val', val);
-      bar.style.height = '0%'; // Start at 0% for transition trigger
+      bar.style.height = '0%';
       mockChart.appendChild(bar);
       
-      // Animate height render
       setTimeout(() => {
         bar.style.height = `${heightPercent}%`;
       }, 100);
     });
   }
 
-  // Close Modal Actions
   const closeModal = () => {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
-    body.style.overflow = 'auto'; // Re-enable body scroll
+    body.style.overflow = 'auto';
   };
 
   modalCloseBtn.addEventListener('click', closeModal);
-  
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
+    if (e.target === modal) closeModal();
   });
 
-  // ESC key listener to close modal
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeModal();
     }
   });
 
-  // --- 8. Tab Toggles in Modal Panel ---
   const tabBtns = modal.querySelectorAll('.panel-tab-btn');
   const tabPanes = modal.querySelectorAll('.tab-pane');
 
@@ -363,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 9. Form Submission Handling (Mocked Contact Form) ---
+  // Contact Form Payload Signal Simulation
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -371,19 +351,530 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       
-      submitBtn.innerHTML = '<span>Sending...</span>';
+      submitBtn.innerHTML = '<span>Transmitting...</span>';
       submitBtn.style.opacity = '0.7';
       submitBtn.disabled = true;
 
-      // Simulate network request delays
       setTimeout(() => {
-        alert('Thank you for reaching out! This message is mock-transmitted successfully.');
+        alert('SIGNAL DECODED: Thank you for establishing contact. Payload received successfully.');
         contactForm.reset();
         submitBtn.innerHTML = originalText;
         submitBtn.style.opacity = '1';
         submitBtn.disabled = false;
       }, 1200);
     });
+  }
+
+
+  // ==========================================================================
+  // --- 8. Interactive Hero Canvas Network Graph ---
+  // ==========================================================================
+  const heroCanvas = document.getElementById('hero-canvas');
+  if (heroCanvas) {
+    const ctx = heroCanvas.getContext('2d');
+    let width = (heroCanvas.width = window.innerWidth);
+    let height = (heroCanvas.height = window.innerHeight);
+
+    let particles = [];
+    const particleCount = Math.min(60, Math.floor((width * height) / 25000));
+    
+    // Mouse coords
+    let mouse = { x: null, y: null, radius: 180 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener('resize', () => {
+      width = heroCanvas.width = window.innerWidth;
+      height = heroCanvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.baseRadius = Math.random() * 2 + 1;
+        this.radius = this.baseRadius;
+      }
+
+      update() {
+        // Bounce on borders
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        // Move
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Mouse attraction/interaction
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            // Attract slightly
+            this.x += (dx / dist) * force * 0.8;
+            this.y += (dy / dist) * force * 0.8;
+            this.radius = this.baseRadius * (1 + force * 1.5);
+          } else {
+            this.radius = this.baseRadius;
+          }
+        } else {
+          this.radius = this.baseRadius;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        // Get active theme primary color
+        const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+        ctx.fillStyle = accentColor;
+        ctx.fill();
+      }
+    }
+
+    // Init
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    // Loop
+    function animateHero() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Update and draw particles
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Draw connections (thin grid lines)
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+
+          if (dist < 120) {
+            const alpha = (120 - dist) / 120 * 0.12;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = accentColor.replace('#', 'rgba('); // Convert hex to rgba helper
+            // We can just draw it using hex with globalAlpha
+            ctx.strokeStyle = accentColor;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+          }
+        }
+      }
+
+      requestAnimationFrame(animateHero);
+    }
+    animateHero();
+  }
+
+
+  // ==========================================================================
+  // --- 9. Skills Tech Stack Blueprint Connections ---
+  // ==========================================================================
+  const blueprintSvg = document.getElementById('blueprint-svg');
+  const skillTags = document.querySelectorAll('.skill-tag');
+  const nodes = document.querySelectorAll('.blueprint-node');
+  
+  // Custom links: tech hover triggers highlighting in another node cluster
+  // e.g. Hovering LangGraph highlights PyTorch and FastAPI
+  const techConnections = {
+    langgraph: ['pytorch', 'fastapi', 'github'],
+    langchain: ['python', 'rag', 'mcp'],
+    rag: ['python', 'scikit', 'mysql'],
+    mcp: ['python', 'fastapi', 'docker'],
+    pytorch: ['python', 'tensorflow', 'scikit', 'math'],
+    tensorflow: ['python', 'pytorch', 'scikit'],
+    fastapi: ['python', 'cpp', 'docker', 'powerbi'],
+    cpp: ['python', 'docker', 'ansys'],
+    ansys: ['math', 'docker'],
+    powerbi: ['mysql', 'excel', 'tableau']
+  };
+
+  function drawConnections(activeTag) {
+    if (!blueprintSvg) return;
+    blueprintSvg.innerHTML = '';
+    const activeTech = activeTag.getAttribute('data-tech');
+    const connectedTechs = techConnections[activeTech];
+
+    if (!connectedTechs) return;
+
+    const svgRect = blueprintSvg.getBoundingClientRect();
+    const activeRect = activeTag.getBoundingClientRect();
+    
+    // Center point of active tag
+    const x1 = activeRect.left - svgRect.left + activeRect.width / 2;
+    const y1 = activeRect.top - svgRect.top + activeRect.height / 2;
+
+    const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+
+    connectedTechs.forEach(targetTech => {
+      const targetTag = document.querySelector(`.skill-tag[data-tech="${targetTech}"]`);
+      if (!targetTag) return;
+
+      // Highlight target tag
+      targetTag.style.borderColor = accentColor;
+      targetTag.style.color = '#FFFFFF';
+      targetTag.style.boxShadow = `0 0 8px var(--color-glow)`;
+
+      const targetRect = targetTag.getBoundingClientRect();
+      const x2 = targetRect.left - svgRect.left + targetRect.width / 2;
+      const y2 = targetRect.top - svgRect.top + targetRect.height / 2;
+
+      // Create SVG line
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1);
+      line.setAttribute('y1', y1);
+      line.setAttribute('x2', x2);
+      line.setAttribute('y2', y2);
+      line.setAttribute('stroke', accentColor);
+      line.setAttribute('stroke-width', '1.5');
+      line.setAttribute('stroke-dasharray', '5,5');
+      line.setAttribute('opacity', '0.6');
+      
+      // Animate line drawing
+      const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+      animate.setAttribute('attributeName', 'stroke-dashoffset');
+      animate.setAttribute('values', '50;0');
+      animate.setAttribute('dur', '1.5s');
+      animate.setAttribute('repeatCount', 'indefinite');
+      line.appendChild(animate);
+
+      blueprintSvg.appendChild(line);
+
+      // Highlight parent node box
+      const parentNode = targetTag.closest('.blueprint-node');
+      if (parentNode) {
+        parentNode.classList.add('connected-node');
+      }
+    });
+  }
+
+  function clearConnections() {
+    if (!blueprintSvg) return;
+    blueprintSvg.innerHTML = '';
+    skillTags.forEach(tag => {
+      tag.style.borderColor = '';
+      tag.style.color = '';
+      tag.style.boxShadow = '';
+    });
+    nodes.forEach(node => {
+      node.classList.remove('connected-node');
+    });
+  }
+
+  skillTags.forEach(tag => {
+    tag.addEventListener('mouseenter', () => drawConnections(tag));
+    tag.addEventListener('mouseleave', clearConnections);
+  });
+
+
+  // ==========================================================================
+  // --- 10. Card Canvases Live Telemetry Simulations ---
+  // ==========================================================================
+  
+  // A helper to initialize canvas scaling for sharp retina renders
+  function setupCanvas(canvas) {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return { ctx, width: rect.width, height: rect.height };
+  }
+
+  // Common animation configurations
+  let animFrameIds = {};
+  
+  // -- 10.1 PredictAI: Scrolling Sine Wave (Vibration Stream) --
+  const canvasPredict = document.getElementById('canvas-predictai');
+  if (canvasPredict) {
+    const { ctx, width, height } = setupCanvas(canvasPredict);
+    let offset = 0;
+    let hoverState = false;
+
+    canvasPredict.addEventListener('mouseenter', () => hoverState = true);
+    canvasPredict.addEventListener('mouseleave', () => hoverState = false);
+
+    function drawPredictWaves() {
+      ctx.fillStyle = '#0b0e14';
+      ctx.fillRect(0, 0, width, height);
+
+      // Grid backing
+      ctx.strokeStyle = '#182030';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < width; x += 20) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+      }
+      for (let y = 0; y < height; y += 20) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+      }
+
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 1.5;
+
+      // Dynamically modulate frequency/amplitude based on hover
+      const speed = hoverState ? 0.28 : 0.08;
+      const amplitude1 = hoverState ? 24 : 15;
+      const frequency1 = hoverState ? 0.04 : 0.02;
+
+      // Draw primary wave
+      ctx.beginPath();
+      for (let x = 0; x < width; x++) {
+        const y = height / 2 + Math.sin(x * frequency1 + offset) * amplitude1;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Draw secondary harmonics (noise overlay)
+      ctx.strokeStyle = accentColor === '#ff6b00' ? '#ff9100' : '#34d399';
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath();
+      for (let x = 0; x < width; x++) {
+        const y = height / 2 + Math.sin(x * (frequency1 * 2) - offset * 1.5) * (amplitude1 * 0.4) + Math.cos(x * 0.08) * 4;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.globalAlpha = 1.0;
+
+      offset += speed;
+      animFrameIds.predict = requestAnimationFrame(drawPredictWaves);
+    }
+    drawPredictWaves();
+  }
+
+  // -- 10.2 CreditGuard: Real-Time Anomaly Pulse (Spikes) --
+  const canvasCredit = document.getElementById('canvas-creditguard');
+  if (canvasCredit) {
+    const { ctx, width, height } = setupCanvas(canvasCredit);
+    let dataPoints = Array(40).fill(height / 2 + 10);
+    let hoverState = false;
+
+    canvasCredit.addEventListener('mouseenter', () => hoverState = true);
+    canvasCredit.addEventListener('mouseleave', () => hoverState = false);
+
+    function drawCreditSpikes() {
+      ctx.fillStyle = '#0b0e14';
+      ctx.fillRect(0, 0, width, height);
+
+      // Backing grid
+      ctx.strokeStyle = '#182030';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < width; x += 25) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+      }
+
+      // Roll data points left
+      dataPoints.shift();
+      
+      // Determine if spike happens (higher chance on hover)
+      const threshold = hoverState ? 0.90 : 0.98;
+      if (Math.random() > threshold) {
+        // Spike anomaly!
+        const spikeHeight = Math.random() * (height * 0.6) + 10;
+        dataPoints.push(spikeHeight);
+      } else {
+        // Stable baseline with noise
+        dataPoints.push(height / 2 + 15 + (Math.random() - 0.5) * 8);
+      }
+
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+      const secondaryColor = getComputedStyle(document.body).getPropertyValue('--color-secondary').trim();
+
+      // Render line
+      ctx.beginPath();
+      const colWidth = width / dataPoints.length;
+      for (let i = 0; i < dataPoints.length; i++) {
+        const x = i * colWidth;
+        const y = dataPoints[i];
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Draw red alert dots on high spikes (anomalies)
+      for (let i = 0; i < dataPoints.length; i++) {
+        if (dataPoints[i] < height / 2 - 10) {
+          ctx.beginPath();
+          ctx.arc(i * colWidth, dataPoints[i], 4, 0, Math.PI * 2);
+          ctx.fillStyle = '#ff5f56';
+          ctx.fill();
+        }
+      }
+
+      setTimeout(() => {
+        animFrameIds.credit = requestAnimationFrame(drawCreditSpikes);
+      }, 60); // Constrain FPS to look like telemetry refresh
+    }
+    drawCreditSpikes();
+  }
+
+  // -- 10.3 PulseBoard: Sentiment Flow Volume Columns --
+  const canvasPulse = document.getElementById('canvas-pulseboard');
+  if (canvasPulse) {
+    const { ctx, width, height } = setupCanvas(canvasPulse);
+    let columns = Array(25).fill(0).map(() => ({
+      val: Math.random() * (height * 0.5) + 15,
+      type: Math.random() > 0.4 ? 'positive' : 'negative'
+    }));
+    let hoverState = false;
+
+    canvasPulse.addEventListener('mouseenter', () => hoverState = true);
+    canvasPulse.addEventListener('mouseleave', () => hoverState = false);
+
+    function drawPulseSentiment() {
+      ctx.fillStyle = '#0b0e14';
+      ctx.fillRect(0, 0, width, height);
+
+      // Backing grid
+      ctx.strokeStyle = '#182030';
+      ctx.lineWidth = 0.5;
+      for (let y = 0; y < height; y += 30) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+      }
+
+      // Roll columns
+      columns.shift();
+      columns.push({
+        val: Math.random() * (height * (hoverState ? 0.8 : 0.5)) + 15,
+        type: Math.random() > 0.4 ? 'positive' : 'negative'
+      });
+
+      const colWidth = width / columns.length;
+      const positiveColor = '#10b981'; // Green
+      const negativeColor = '#ff5f56'; // Red
+
+      for (let i = 0; i < columns.length; i++) {
+        const x = i * colWidth + 2;
+        const colHeight = columns[i].val;
+        const color = columns[i].type === 'positive' ? positiveColor : negativeColor;
+
+        ctx.fillStyle = color;
+        ctx.globalAlpha = hoverState ? 0.8 : 0.4;
+        ctx.fillRect(x, height - colHeight, colWidth - 4, colHeight);
+      }
+      ctx.globalAlpha = 1.0;
+
+      setTimeout(() => {
+        animFrameIds.pulse = requestAnimationFrame(drawPulseSentiment);
+      }, hoverState ? 80 : 160);
+    }
+    drawPulseSentiment();
+  }
+
+  // -- 10.4 AgentIQ: Active RAG Traversing Node Network --
+  const canvasAgent = document.getElementById('canvas-agentiq');
+  if (canvasAgent) {
+    const { ctx, width, height } = setupCanvas(canvasAgent);
+    let hoverState = false;
+
+    canvasAgent.addEventListener('mouseenter', () => hoverState = true);
+    canvasAgent.addEventListener('mouseleave', () => hoverState = false);
+
+    // Structure RAG node network coordinates
+    const nodesLayout = [
+      { x: width * 0.15, y: height * 0.5, name: 'Q' },
+      { x: width * 0.45, y: height * 0.25, name: 'V1' },
+      { x: width * 0.45, y: height * 0.5, name: 'V2' },
+      { x: width * 0.45, y: height * 0.75, name: 'Web' },
+      { x: width * 0.8, y: height * 0.5, name: 'LLM' }
+    ];
+
+    let pulseOffset = 0;
+
+    function drawAgentRAG() {
+      ctx.fillStyle = '#0b0e14';
+      ctx.fillRect(0, 0, width, height);
+
+      const accentColor = getComputedStyle(document.body).getPropertyValue('--color-primary').trim();
+      const secondaryColor = getComputedStyle(document.body).getPropertyValue('--color-secondary').trim();
+
+      // Draw connection lines
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = '#182030';
+      
+      // Question -> vectors / web
+      for (let i = 1; i <= 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(nodesLayout[0].x, nodesLayout[0].y);
+        ctx.lineTo(nodesLayout[i].x, nodesLayout[i].y);
+        ctx.stroke();
+      }
+      // vectors / web -> LLM
+      for (let i = 1; i <= 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(nodesLayout[i].x, nodesLayout[i].y);
+        ctx.lineTo(nodesLayout[4].x, nodesLayout[4].y);
+        ctx.stroke();
+      }
+
+      // Draw active telemetry flow pulse along lines
+      const speed = hoverState ? 0.05 : 0.015;
+      pulseOffset = (pulseOffset + speed) % 1.0;
+
+      ctx.fillStyle = accentColor;
+      // Pulse 1: Q -> V2
+      const px1 = nodesLayout[0].x + (nodesLayout[2].x - nodesLayout[0].x) * pulseOffset;
+      const py1 = nodesLayout[0].y + (nodesLayout[2].y - nodesLayout[0].y) * pulseOffset;
+      ctx.beginPath(); ctx.arc(px1, py1, 4, 0, Math.PI * 2); ctx.fill();
+
+      // Pulse 2: V2 -> LLM
+      const px2 = nodesLayout[2].x + (nodesLayout[4].x - nodesLayout[2].x) * ((pulseOffset + 0.5) % 1.0);
+      const py2 = nodesLayout[2].y + (nodesLayout[4].y - nodesLayout[2].y) * ((pulseOffset + 0.5) % 1.0);
+      ctx.beginPath(); ctx.arc(px2, py2, 4, 0, Math.PI * 2); ctx.fill();
+
+      // Draw static node dots
+      nodesLayout.forEach((node, idx) => {
+        const isHoveredNode = hoverState && (idx === 0 || idx === 2 || idx === 4);
+        
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, isHoveredNode ? 8 : 6, 0, Math.PI * 2);
+        ctx.fillStyle = isHoveredNode ? secondaryColor : '#171d2b';
+        ctx.strokeStyle = isHoveredNode ? accentColor : varAccentBorderColor();
+        ctx.lineWidth = 1.5;
+        ctx.fill();
+        ctx.stroke();
+
+        // Node label
+        ctx.font = '9px monospace';
+        ctx.fillStyle = '#8b9bb4';
+        ctx.textAlign = 'center';
+        ctx.fillText(node.name, node.x, node.y - 12);
+      });
+
+      animFrameIds.agent = requestAnimationFrame(drawAgentRAG);
+    }
+
+    function varAccentBorderColor() {
+      return getComputedStyle(document.body).getPropertyValue('--color-card-border').trim();
+    }
+    drawAgentRAG();
   }
 
 });
